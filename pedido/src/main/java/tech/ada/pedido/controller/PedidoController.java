@@ -11,7 +11,7 @@ import tech.ada.pedido.service.ValidarProduto;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController("pedidos")
+@RestController
 public class PedidoController {
 
     private static List<Pedido> pedidos = new ArrayList<>();
@@ -24,8 +24,8 @@ public class PedidoController {
     @PostMapping
     public Pedido create(@RequestBody Pedido pedido) {
         pedido.setId(pedidos.size());
-        pedidos.add(pedido);
         validarProduto.execute(pedido.getProdutoId());
+        pedidos.add(pedido);
         return pedido;
     }
 

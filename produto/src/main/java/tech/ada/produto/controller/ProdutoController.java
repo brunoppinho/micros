@@ -10,7 +10,7 @@ import tech.ada.produto.model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController("produtos")
+@RestController
 public class ProdutoController {
 
     private static List<Produto> produtos = new ArrayList<>();
@@ -22,7 +22,7 @@ public class ProdutoController {
         return produto;
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     public Produto get(@PathVariable int id) {
         return produtos.get(id);
     }
