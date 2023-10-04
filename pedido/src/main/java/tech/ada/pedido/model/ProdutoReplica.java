@@ -1,28 +1,24 @@
-package tech.ada.produto.model;
+package tech.ada.pedido.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Getter
 @Setter
 @ToString
 @Entity
-public class Produto {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class ProdutoReplica {
 
     @Id
-    @GeneratedValue
     private int id;
 
     @Column
-    private String descricao;
-
-    @Column
     private String nome;
-
 }

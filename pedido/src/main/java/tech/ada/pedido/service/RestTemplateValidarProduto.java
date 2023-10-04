@@ -5,7 +5,7 @@ import com.netflix.discovery.EurekaClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import tech.ada.produto.model.Produto;
+import tech.ada.pedido.model.ProdutoReplica;
 
 @Service
 @ConditionalOnSingleCandidate(ValidarProduto.class)
@@ -26,6 +26,6 @@ public class RestTemplateValidarProduto implements ValidarProduto {
         String hostName = destination.getHostName();
         int port = destination.getPort();
         String url = "http://" + hostName + ":" + port + "/" + produtoId;
-        new RestTemplate().getForObject(url, Produto.class);
+        new RestTemplate().getForObject(url, ProdutoReplica.class);
     }
 }

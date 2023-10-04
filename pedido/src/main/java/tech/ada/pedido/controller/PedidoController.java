@@ -6,31 +6,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import tech.ada.pedido.model.Pedido;
-import tech.ada.pedido.service.ValidarProduto;
-
-import java.util.ArrayList;
-import java.util.List;
+import tech.ada.pedido.service.PedidoService;
 
 @RestController
 public class PedidoController {
 
-    private static List<Pedido> pedidos = new ArrayList<>();
-    private final ValidarProduto validarProduto;
+    private final PedidoService pedidoService;
 
-    public PedidoController(ValidarProduto validarProduto) {
-        this.validarProduto = validarProduto;
+    public PedidoController(PedidoService pedidoService) {
+        this.pedidoService = pedidoService;
     }
 
-    @PostMapping
+    @PostMapping("pedido")
     public Pedido create(@RequestBody Pedido pedido) {
-        pedido.setId(pedidos.size());
-        validarProduto.execute(pedido.getProdutoId());
-        pedidos.add(pedido);
-        return pedido;
+        return pedidoService.create(pedido);
+
     }
 
-    @GetMapping
+    @GetMapping("pedido/{id}")
     public Pedido get(@PathVariable int id) {
-        return pedidos.get(id);
+        return pedidoService.get(id);
     }
 }
