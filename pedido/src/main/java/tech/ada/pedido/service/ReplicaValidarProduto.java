@@ -3,7 +3,7 @@ package tech.ada.pedido.service;
 import org.springframework.stereotype.Service;
 import tech.ada.pedido.repository.ProdutoReplicaRepository;
 
-@Service
+//@Service
 public class ReplicaValidarProduto implements ValidarProduto {
 
     private final ProdutoReplicaRepository repository;
